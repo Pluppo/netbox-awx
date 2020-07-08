@@ -51,8 +51,7 @@ for i in hosts_list:
 
 for i in devices:
     if i['name']:
-        if i['config_context']:
-            hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']] = i['config_context']
+        hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']] = i['config_context']
         if i['site']:
             sites.setdefault('site_' + i['site']['slug'], {'hosts': []})['hosts'].append(i['name'])
             hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']].setdefault('tags', {})['site'] = i['site']['slug']
