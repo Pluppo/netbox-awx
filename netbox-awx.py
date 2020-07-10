@@ -53,13 +53,13 @@ for i in devices:
     if i['name']:
         hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']] = i['config_context']
         if i['site']:
-            sites.setdefault('site_' + i['site']['slug'], {'hosts': []})['hosts'].append(i['name'])
+            sites.setdefault(i['site']['slug'], {'hosts': []})['hosts'].append(i['name'])
             hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']].setdefault('tags', {})['site'] = i['site']['slug']
         if i['rack']:
             racks.setdefault('rack_' + i['rack']['name'], {'hosts': []})['hosts'].append(i['name'])
             hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']].setdefault('tags', {})['rack'] = i['rack']['name']
         if i['platform']:
-            platforms.setdefault('platform_' + i['platform']['slug'], {'hosts': []})['hosts'].append(i['name'])
+            platforms.setdefault(i['platform']['slug'], {'hosts': []})['hosts'].append(i['name'])
             hostvars.setdefault('_meta', {'hostvars': {}})['hostvars'][i['name']].setdefault('tags', {})['platform'] = i['platform']['slug']
         if i['tenant']:
             tenants.setdefault('tenant_' + i['tenant']['slug'], {'hosts': []})['hosts'].append(i['name'])
